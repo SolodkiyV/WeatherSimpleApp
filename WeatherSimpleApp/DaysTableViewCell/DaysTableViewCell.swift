@@ -21,4 +21,10 @@ class DaysTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    static let identifier = "DaysTableViewCell"
+    
+    static func nib() -> UINib {
+        return UINib(nibName: "DaysTableViewCell", bundle: nil)
+    }
+    
 }
