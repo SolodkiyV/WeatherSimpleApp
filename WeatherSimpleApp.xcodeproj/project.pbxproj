@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C1C61A224BE944600D19EEF /* WeatherDataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1C61A124BE944600D19EEF /* WeatherDataStruct.swift */; };
 		3C2CA5C624BDE24F007E0DB2 /* DaysTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CA5C424BDE24F007E0DB2 /* DaysTableViewCell.swift */; };
 		3C2CA5C724BDE24F007E0DB2 /* DaysTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C2CA5C524BDE24F007E0DB2 /* DaysTableViewCell.xib */; };
 		3C2CA5CA24BDE298007E0DB2 /* HourlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CA5C824BDE298007E0DB2 /* HourlyTableViewCell.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C1C61A124BE944600D19EEF /* WeatherDataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataStruct.swift; sourceTree = "<group>"; };
 		3C2CA5C424BDE24F007E0DB2 /* DaysTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysTableViewCell.swift; sourceTree = "<group>"; };
 		3C2CA5C524BDE24F007E0DB2 /* DaysTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaysTableViewCell.xib; sourceTree = "<group>"; };
 		3C2CA5C824BDE298007E0DB2 /* HourlyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTableViewCell.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				3CAEF17A24BDDE5900D3EAAC /* AppDelegate.swift */,
 				3C2CA5C224BDE186007E0DB2 /* HourlyTableViewCell */,
 				3C2CA5C324BDE1C7007E0DB2 /* DaysTableViewCell */,
+				3C1C61A124BE944600D19EEF /* WeatherDataStruct.swift */,
 				3CAEF17C24BDDE5900D3EAAC /* MainViewController.swift */,
 				3C2CA5CE24BDFF50007E0DB2 /* MapViewController.swift */,
 				3CAEF18124BDDE5D00D3EAAC /* Assets.xcassets */,
@@ -169,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CAEF17D24BDDE5900D3EAAC /* MainViewController.swift in Sources */,
+				3C1C61A224BE944600D19EEF /* WeatherDataStruct.swift in Sources */,
 				3C2CA5C624BDE24F007E0DB2 /* DaysTableViewCell.swift in Sources */,
 				3C2CA5CA24BDE298007E0DB2 /* HourlyTableViewCell.swift in Sources */,
 				3C2CA5CF24BDFF50007E0DB2 /* MapViewController.swift in Sources */,

@@ -13,10 +13,19 @@ class MainViewController: UIViewController {
     @IBOutlet var mainTable: UITableView!
     
     var models = [Weather]()
+    let currentCity = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let url = "https://api.openweathermap.org/data/2.5/weather?q=\(currentCity)&appid=045e4e83c9704ff8430809b1f0b7f377"
+        
+        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: {data, responds, error in
+            guard let data = data, error == nil else {
+                print("Something went wrong")
+                return
+            }
+        })
+        
         setupHourlyTableView()
         setupDaysTableView()
         
@@ -31,10 +40,6 @@ class MainViewController: UIViewController {
         // Register cell
         mainTable.register(DaysTableViewCell.nib(), forCellReuseIdentifier: DaysTableViewCell.identifier)
     }
-    
-}
-
-struct Weather {
     
 }
 // Table
