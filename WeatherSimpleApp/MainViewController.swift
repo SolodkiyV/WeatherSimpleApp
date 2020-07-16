@@ -12,16 +12,18 @@ class MainViewController: UIViewController {
 
     @IBOutlet var mainTable: UITableView!
     
-    var models = [Weather]()
-    let currentCity = ""
-    
+    let location = MapViewController()
+    var models = [MainStruct]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = "https://api.openweathermap.org/data/2.5/weather?q=\(currentCity)&appid=045e4e83c9704ff8430809b1f0b7f377"
+
+        let url = "https://api.openweathermap.org/data/2.5/onecall?lat=47.81&lon=35.18&units=metric&appid=045e4e83c9704ff8430809b1f0b7f377"
         
         URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: {data, responds, error in
             guard let data = data, error == nil else {
                 print("Something went wrong")
+               
                 return
             }
         })
@@ -45,10 +47,12 @@ class MainViewController: UIViewController {
 // Table
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         return UITableViewCell()
     }
     

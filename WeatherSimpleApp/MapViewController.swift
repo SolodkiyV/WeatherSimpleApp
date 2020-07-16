@@ -4,13 +4,6 @@
 //
 //  Created by Valeriy on 14.07.2020.
 //  Copyright © 2020 Valerii. All rights reserved.
-//
-//искать только города.
-//let filter = GMSAutocompleteFilter()
-//filter.type = GMSPlacesAutocompleteTypeFilter.City
-
-//Как говорит @Disco S2, добавьте экземпляр MKMapView в качестве подсмотра к вашему представлению. Чтобы узнать, где ваш пользователь нажал на карте, используйте этот метод:
-//- (CGPoint)convertCoordinate:(CLLocationCoordinate2D)coordinate toPointToView:(UIView *)view
 
 import UIKit
 import MapKit
@@ -18,14 +11,22 @@ import MapKit
 class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var anotherPlaceButton: UIButton!
+    @IBOutlet weak var cityLabel: UILabel!
+    
     
     let locationManager = CLLocationManager()
-    let regionInMetters: Double  = 50000
-    
+    let regionInMetters: Double  = 100000
+    var previousLocation: CLLocation?
+    var countryName = ""
+    var cityName = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLocationServices()
+        outletsSetup()
     }
+    
     func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()
@@ -50,8 +51,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     func checkLocationAutorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
-            mapView.showsUserLocation = true
-            centerViewOnUserLocation()
+            startTrackingUserLocation()
         case .denied:
             break
         case .notDetermined:
@@ -60,6 +60,58 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             break
         case .authorizedAlways:
             break
+        }
+    }
+    
+    func startTrackingUserLocation() {
+        mapView.showsUserLocation = true
+        centerViewOnUserLocation()
+        previousLocation = getCenterLocation(for: mapView )
+    }
+    
+    func outletsSetup() {
+        anotherPlaceButton.layer.cornerRadius = 10
+        anotherPlaceButton.clipsToBounds = true
+        cityLabel.layer.cornerRadius = 10
+        cityLabel.clipsToBounds = true
+    }
+    
+    func getCenterLocation(for: MKMapView) -> CLLocation {
+        let latitude = mapView.centerCoordinate.latitude
+        let longitude = mapView.centerCoordinate.longitude
+        print("\(latitude),\(longitude)")
+        return CLLocation(latitude: latitude, longitude: longitude)
+    }
+}
+
+extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        let center = getCenterLocation(for: mapView)
+        let geoCoder = CLGeocoder()
+        
+        guard let previousLocation = self.previousLocation else { return }
+        guard center.distance(from: previousLocation) > 1000 else { return }
+        self.previousLocation = center
+        
+        geoCoder.reverseGeocodeLocation(center) { [weak self] (placemarks, error) in
+            guard let self = self else { return }
+            
+            if let _ = error {
+                // SHOW ALERT INFORMATION TO USER
+                return
+            }
+            guard let placemark = placemarks?.first else {
+                // SHOW ALERT INFORMATION TO USER
+                return
+            }
+
+            self.countryName = placemark.country ?? ""
+            self.cityName = placemark.locality ?? ""
+
+            DispatchQueue.main.async {
+                self.cityLabel.text = "\(self.cityName), \(self.countryName)"
+
+            }
         }
     }
 }
