@@ -67,6 +67,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         mapView.showsUserLocation = true
         centerViewOnUserLocation()
         previousLocation = getCenterLocation(for: mapView )
+        print("Мои координаты: \(previousLocation!.coordinate.latitude), \(previousLocation!.coordinate.longitude)")
     }
     
     func outletsSetup() {
@@ -79,7 +80,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     func getCenterLocation(for: MKMapView) -> CLLocation {
         let latitude = mapView.centerCoordinate.latitude
         let longitude = mapView.centerCoordinate.longitude
-        print("\(latitude),\(longitude)")
         return CLLocation(latitude: latitude, longitude: longitude)
     }
 }
