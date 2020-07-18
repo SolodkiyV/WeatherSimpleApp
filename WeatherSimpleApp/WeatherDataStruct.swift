@@ -21,8 +21,8 @@ struct CurrentWeather: Codable {
     let time: Int
     let summary: String
     let icon: String
-    let precipIntensity: Int
-    let precipProbability: Int
+    let precipIntensity: Double
+    let precipProbability: Double
     let temperature: Double
     let apparentTemperature: Double
     let dewPoint: Double

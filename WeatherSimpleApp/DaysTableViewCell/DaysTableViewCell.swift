@@ -40,6 +40,10 @@ class DaysTableViewCell: UITableViewCell {
             self.minMaxTempLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             self.dayLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             self.iconImageView.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            // BLUR
+            let blurEffect = UIBlurEffect(style: .extraLight)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            self.backgroundView = blurEffectView
         }
     }
     

@@ -17,7 +17,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
     let regionInMetters: Double  = 100000
-    var previousLocation: CLLocation?
     var countryName = ""
     var cityName = ""
 
@@ -66,8 +65,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     func startTrackingUserLocation() {
         mapView.showsUserLocation = true
         centerViewOnUserLocation()
-        previousLocation = getCenterLocation(for: mapView )
-        print("Мои координаты: \(previousLocation!.coordinate.latitude), \(previousLocation!.coordinate.longitude)")
+        PositionManager.sharedInstance.currentPosition = getCenterLocation(for: mapView )
     }
     
     func outletsSetup() {
@@ -88,11 +86,7 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let center = getCenterLocation(for: mapView)
         let geoCoder = CLGeocoder()
-        
-        guard let previousLocation = self.previousLocation else { return }
-        guard center.distance(from: previousLocation) > 1000 else { return }
-        self.previousLocation = center
-        
+        PositionManager.sharedInstance.currentPosition = center
         geoCoder.reverseGeocodeLocation(center) { [weak self] (placemarks, error) in
             guard let self = self else { return }
             
@@ -107,7 +101,9 @@ extension MapViewController: MKMapViewDelegate {
 
             self.countryName = placemark.country ?? ""
             self.cityName = placemark.locality ?? ""
-
+            
+            PositionManager.sharedInstance.currentCity = placemark.locality ?? ""
+            
             DispatchQueue.main.async {
                 self.cityLabel.text = "\(self.cityName), \(self.countryName)"
 

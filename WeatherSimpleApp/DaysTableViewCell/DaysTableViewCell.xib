@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWp-Vz-S0D">
-                        <rect key="frame" x="172.5" y="36" width="55" height="27.5"/>
+                        <rect key="frame" x="172.5" y="36" width="55" height="28"/>
                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -31,23 +31,21 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NSg-a1-ZEo">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NSg-a1-ZEo">
                         <rect key="frame" x="348" y="34" width="32" height="32"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="32" id="aES-Qd-gVH"/>
-                            <constraint firstAttribute="width" constant="32" id="ovx-MU-e68"/>
+                            <constraint firstAttribute="height" constant="32" id="7Jb-OZ-ZeJ"/>
+                            <constraint firstAttribute="width" constant="32" id="gif-a2-QX5"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="NSg-a1-ZEo" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="1Al-a6-QAa"/>
-                    <constraint firstItem="bWp-Vz-S0D" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="A7O-UI-cOK"/>
-                    <constraint firstItem="bWp-Vz-S0D" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="GRV-hi-pgM"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="NSg-a1-ZEo" secondAttribute="bottom" constant="23" id="HmT-jn-ZAf"/>
-                    <constraint firstItem="UVK-UR-lcy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="25" id="Vct-rA-LPY"/>
-                    <constraint firstItem="NSg-a1-ZEo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="23" id="YyJ-lK-VqX"/>
-                    <constraint firstItem="UVK-UR-lcy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="gVX-E8-cac"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="UVK-UR-lcy" secondAttribute="bottom" constant="25" id="vtT-mt-N6J"/>
+                    <constraint firstItem="UVK-UR-lcy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="3MC-ib-0OC"/>
+                    <constraint firstItem="bWp-Vz-S0D" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="8El-bO-HoV"/>
+                    <constraint firstItem="UVK-UR-lcy" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="GUi-Sq-NyU"/>
+                    <constraint firstItem="bWp-Vz-S0D" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Kms-YH-IPU"/>
+                    <constraint firstItem="NSg-a1-ZEo" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="a8T-6K-SB9"/>
+                    <constraint firstItem="NSg-a1-ZEo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="yQf-aX-G30"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
