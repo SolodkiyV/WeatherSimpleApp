@@ -16,6 +16,7 @@
 		3C2CA5CF24BDFF50007E0DB2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CA5CE24BDFF50007E0DB2 /* MapViewController.swift */; };
 		3C4BDBF124C1625E00A0E889 /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4BDBEF24C1625E00A0E889 /* HorizontalCollectionViewCell.swift */; };
 		3C4BDBF224C1625E00A0E889 /* HorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C4BDBF024C1625E00A0E889 /* HorizontalCollectionViewCell.xib */; };
+		3C4FD3D024C4884200E9395F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4FD3CF24C4884200E9395F /* SearchViewController.swift */; };
 		3CAEF17B24BDDE5900D3EAAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAEF17A24BDDE5900D3EAAC /* AppDelegate.swift */; };
 		3CAEF17D24BDDE5900D3EAAC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAEF17C24BDDE5900D3EAAC /* MainViewController.swift */; };
 		3CAEF18024BDDE5900D3EAAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAEF17E24BDDE5900D3EAAC /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		3C2CA5CE24BDFF50007E0DB2 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3C4BDBEF24C1625E00A0E889 /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
 		3C4BDBF024C1625E00A0E889 /* HorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
+		3C4FD3CF24C4884200E9395F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3CAEF17724BDDE5900D3EAAC /* WeatherSimpleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherSimpleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CAEF17A24BDDE5900D3EAAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CAEF17C24BDDE5900D3EAAC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				3C2CA5CE24BDFF50007E0DB2 /* MapViewController.swift */,
 				3C09FC7624C228AC0080FAF3 /* PositionManager.swift */,
 				3C1C61A124BE944600D19EEF /* WeatherDataStruct.swift */,
+				3C4FD3CF24C4884200E9395F /* SearchViewController.swift */,
 				3CAEF18124BDDE5D00D3EAAC /* Assets.xcassets */,
 				3CAEF17E24BDDE5900D3EAAC /* Main.storyboard */,
 				3CAEF18324BDDE5D00D3EAAC /* LaunchScreen.storyboard */,
@@ -260,6 +263,7 @@
 				3C09FC7724C228AC0080FAF3 /* PositionManager.swift in Sources */,
 				3CAEF17D24BDDE5900D3EAAC /* MainViewController.swift in Sources */,
 				3C1C61A224BE944600D19EEF /* WeatherDataStruct.swift in Sources */,
+				3C4FD3D024C4884200E9395F /* SearchViewController.swift in Sources */,
 				3C2CA5C624BDE24F007E0DB2 /* DaysTableViewCell.swift in Sources */,
 				3C2CA5CA24BDE298007E0DB2 /* HourlyTableViewCell.swift in Sources */,
 				3C2CA5CF24BDFF50007E0DB2 /* MapViewController.swift in Sources */,

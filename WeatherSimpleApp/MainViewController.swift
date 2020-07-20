@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 class MainViewController: UIViewController {
-
+    
     @IBOutlet var mainTable: UITableView!
     
     var models = [DailyWeatherEntry]()
@@ -24,16 +24,14 @@ class MainViewController: UIViewController {
         setupNavigationBar()
         setupHourlyTableView()
         setupDaysTableView()
-        request()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        request()
     }
 
-
-    
     func setupView() {
         self.view.backgroundColor = #colorLiteral(red: 0.2901960784, green: 0.5647058824, blue: 0.8862745098, alpha: 1)
     }
@@ -46,25 +44,32 @@ class MainViewController: UIViewController {
     
     func setupLeftNavBarItems() {
         
-        let locationImageView = UIImageView(image: #imageLiteral(resourceName: "ic_place"))
-        locationImageView.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
-        locationImageView.contentMode = .scaleAspectFit
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: locationImageView)
+        let locationButton = UIButton(type: .system)
+        locationButton.setImage(#imageLiteral(resourceName: "ic_place").withRenderingMode(.alwaysOriginal) , for: .normal)
+        locationButton.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: locationButton)
         
         let cityLabel = UILabel()
         cityLabel.text = "\(PositionManager.sharedInstance.currentCity)"
         cityLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         cityLabel.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
         
-        navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: locationImageView), UIBarButtonItem(customView: cityLabel)]
+        navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: locationButton), UIBarButtonItem(customView: cityLabel)]
+        //Open Search View Controller action
+        locationButton.addTarget(self, action:#selector(self.buttonClicked), for: .touchUpInside)
     }
-    
+    //Open Search View Controller
+    @objc func buttonClicked() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc: UIViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewControllerID") as UIViewController
+        self.present(vc, animated: true, completion: nil)
+    }
     // Table
-
+    
     func setupTableView() {
         mainTable.backgroundColor = #colorLiteral(red: 0.2901960784, green: 0.5647058824, blue: 0.8862745098, alpha: 1)
     }
-
+    
     func setupHourlyTableView() {
         // Register cell
         mainTable.register(HourlyTableViewCell.nib(), forCellReuseIdentifier: HourlyTableViewCell.identifier)
@@ -97,18 +102,23 @@ class MainViewController: UIViewController {
             
             //Update user interface
             DispatchQueue.main.async {
-                
+
                 self.mainTable.reloadData()
+//                let headerVIew = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+//                self.mainTable.tableHeaderView = headerVIew
             }
         }).resume()
     }
+    
+
 }
 // Table
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.separatorStyle = .none
         if section == 0 {
@@ -116,7 +126,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return models.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Hour Cell
         if indexPath.section == 0 {
