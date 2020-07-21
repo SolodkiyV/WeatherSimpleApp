@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
     
     var models = [DailyWeatherEntry]()
     var hourlyModels = [HourlyWeatherEntry]()
-    var cityHeader: WeatherResponse?
+    var current: CurrentWeather?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +24,7 @@ class MainViewController: UIViewController {
         setupNavigationBar()
         setupHourlyTableView()
         setupDaysTableView()
+        setupHeaderTableView()
         
     }
     
@@ -70,6 +71,10 @@ class MainViewController: UIViewController {
         mainTable.backgroundColor = #colorLiteral(red: 0.2901960784, green: 0.5647058824, blue: 0.8862745098, alpha: 1)
     }
     
+    func setupHeaderTableView() {
+        // Register cell
+        mainTable.register(HeaderTableViewCell.nib(), forCellReuseIdentifier: HeaderTableViewCell.identifier)
+    }
     func setupHourlyTableView() {
         // Register cell
         mainTable.register(HourlyTableViewCell.nib(), forCellReuseIdentifier: HourlyTableViewCell.identifier)
@@ -99,24 +104,31 @@ class MainViewController: UIViewController {
             let entries = result.daily.data
             self.models.append(contentsOf: entries)
             self.hourlyModels = result.hourly.data
-            
+            let current = result.currently
+            self.current = current
             //Update user interface
             DispatchQueue.main.async {
 
                 self.mainTable.reloadData()
-//                let headerVIew = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-//                self.mainTable.tableHeaderView = headerVIew
             }
         }).resume()
     }
     
-
+    func getDayForDate(_ date: Date?) -> String {
+        guard let inputDate = date else {
+            return ""
+        }
+        
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "RU_ru")
+        formatter.dateFormat = "E, dd MMM"
+        return formatter.string(from: inputDate).uppercased()
+    }
 }
 // Table
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -124,20 +136,45 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 1
         }
+        if section == 1 {
+            return 1
+        }
         return models.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Hour Cell
+        //HeaderView Cell
         if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: HeaderTableViewCell.identifier, for: indexPath) as! HeaderTableViewCell
+            guard let currentWeather = self.current else {
+                return cell
+            }
+            cell.dayLabelll.text = getDayForDate(Date(timeIntervalSince1970: Double(currentWeather.time)))
+            cell.minMaxTempLabelll.text = "\(Int(models[indexPath.row].temperatureMax))° / \(Int(models[indexPath.row].temperatureMin))°"
+            cell.humidityLabel.text = "\(Int(100 * (currentWeather.humidity))) %"
+            cell.windLabel.text = "\(Int(currentWeather.windSpeed))м/сек"
+            if currentWeather.icon.contains("clear") {
+                cell.weatherImageView.image = UIImage(named: "ic_white_day_bright")
+            }else if currentWeather.icon.contains("cloudy") {
+                cell.weatherImageView.image = UIImage(named: "ic_white_day_cloudy")
+            }else {
+                cell.weatherImageView.image = UIImage(named: "ic_white_day_rain")
+            }
+            let windSide = currentWeather.windBearing
+            if windSide <= 15 {
+                cell.windSideIcon.image = #imageLiteral(resourceName: "icon_wind_n")
+            }
+            return cell
+        }
+        // Hour Cell
+        if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: HourlyTableViewCell.identifier, for: indexPath) as! HourlyTableViewCell
             cell.configure(with: hourlyModels)
-            
             return cell
         }
         // DayCell
         let cell = tableView.dequeueReusableCell(withIdentifier: DaysTableViewCell.identifier, for: indexPath) as! DaysTableViewCell
         cell.configure(with: models[indexPath.row])
-        
         return cell
     }
     
@@ -145,9 +182,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             return 155
-        } else {
-            return 50
         }
+        if indexPath.section == 1 {
+            return 155
+        }
+        return 50
     }
 }
 

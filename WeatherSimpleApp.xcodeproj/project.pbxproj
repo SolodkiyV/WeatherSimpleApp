@@ -22,6 +22,8 @@
 		3CAEF18024BDDE5900D3EAAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAEF17E24BDDE5900D3EAAC /* Main.storyboard */; };
 		3CAEF18224BDDE5D00D3EAAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CAEF18124BDDE5D00D3EAAC /* Assets.xcassets */; };
 		3CAEF18524BDDE5D00D3EAAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CAEF18324BDDE5D00D3EAAC /* LaunchScreen.storyboard */; };
+		3CFC594724C6804A00C87430 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFC594524C6804A00C87430 /* HeaderTableViewCell.swift */; };
+		3CFC594824C6804A00C87430 /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CFC594624C6804A00C87430 /* HeaderTableViewCell.xib */; };
 		C74C9735D515EAAB43589E3A /* Pods_WeatherSimpleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DABA85419268055283F4BDE4 /* Pods_WeatherSimpleApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +45,8 @@
 		3CAEF18124BDDE5D00D3EAAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3CAEF18424BDDE5D00D3EAAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3CAEF18624BDDE5D00D3EAAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CFC594524C6804A00C87430 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		3CFC594624C6804A00C87430 /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
 		414D1C3864AC080DB13F1A78 /* Pods-WeatherSimpleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherSimpleApp.release.xcconfig"; path = "Target Support Files/Pods-WeatherSimpleApp/Pods-WeatherSimpleApp.release.xcconfig"; sourceTree = "<group>"; };
 		DABA85419268055283F4BDE4 /* Pods_WeatherSimpleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherSimpleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E19348571B47F162F1F44ABE /* Pods-WeatherSimpleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherSimpleApp.debug.xcconfig"; path = "Target Support Files/Pods-WeatherSimpleApp/Pods-WeatherSimpleApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				3CAEF17A24BDDE5900D3EAAC /* AppDelegate.swift */,
+				3CFC594424C6802700C87430 /* HeaderView */,
 				3C2CA5C224BDE186007E0DB2 /* HourlyTableViewCell */,
 				3C2CA5C324BDE1C7007E0DB2 /* DaysTableViewCell */,
 				3CAEF17C24BDDE5900D3EAAC /* MainViewController.swift */,
@@ -123,6 +128,15 @@
 				3CAEF18624BDDE5D00D3EAAC /* Info.plist */,
 			);
 			path = WeatherSimpleApp;
+			sourceTree = "<group>";
+		};
+		3CFC594424C6802700C87430 /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				3CFC594524C6804A00C87430 /* HeaderTableViewCell.swift */,
+				3CFC594624C6804A00C87430 /* HeaderTableViewCell.xib */,
+			);
+			path = HeaderView;
 			sourceTree = "<group>";
 		};
 		6732C13CBEE44F9E86DB2A3B /* Frameworks */ = {
@@ -203,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CAEF18524BDDE5D00D3EAAC /* LaunchScreen.storyboard in Resources */,
+				3CFC594824C6804A00C87430 /* HeaderTableViewCell.xib in Resources */,
 				3C2CA5CB24BDE298007E0DB2 /* HourlyTableViewCell.xib in Resources */,
 				3CAEF18224BDDE5D00D3EAAC /* Assets.xcassets in Resources */,
 				3C4BDBF224C1625E00A0E889 /* HorizontalCollectionViewCell.xib in Resources */,
@@ -266,6 +281,7 @@
 				3C4FD3D024C4884200E9395F /* SearchViewController.swift in Sources */,
 				3C2CA5C624BDE24F007E0DB2 /* DaysTableViewCell.swift in Sources */,
 				3C2CA5CA24BDE298007E0DB2 /* HourlyTableViewCell.swift in Sources */,
+				3CFC594724C6804A00C87430 /* HeaderTableViewCell.swift in Sources */,
 				3C2CA5CF24BDFF50007E0DB2 /* MapViewController.swift in Sources */,
 				3CAEF17B24BDDE5900D3EAAC /* AppDelegate.swift in Sources */,
 				3C4BDBF124C1625E00A0E889 /* HorizontalCollectionViewCell.swift in Sources */,

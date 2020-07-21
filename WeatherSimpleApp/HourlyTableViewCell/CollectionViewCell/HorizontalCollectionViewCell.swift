@@ -26,13 +26,24 @@ class HorizontalCollectionViewCell: UICollectionViewCell {
         self.timeLabel.text = getDayForDate(Date(timeIntervalSince1970: Double(models.time)))
         self.timeLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         self.iconImageView.contentMode = .scaleAspectFit
-        self.iconImageView.image = UIImage(named: "clear")
         if icon.contains("clear") {
-            self.iconImageView.image = UIImage(named: "ic_white_day_bright")
+            if icon.contains("-night") {
+                self.iconImageView.image = UIImage(named: "ic_white_night_bright")
+            }else {
+                self.iconImageView.image = UIImage(named: "ic_white_day_bright")
+            }
         }else if icon.contains("cloudy") {
-            self.iconImageView.image = UIImage(named: "ic_white_day_cloudy")
-        }else {
-            self.iconImageView.image = UIImage(named: "ic_white_day_rain")
+            if icon.contains("-night") {
+                self.iconImageView.image = UIImage(named: "ic_white_night_cloudy")
+            }else {
+                self.iconImageView.image = UIImage(named: "ic_white_day_cloudy")
+            }
+        }else if icon.contains("rain"){
+            if icon.contains("-night") {
+                self.iconImageView.image = UIImage(named: "ic_white_night_rain")
+            }else {
+                self.iconImageView.image = UIImage(named: "ic_white_day_rain")
+            }
         }
         self.iconImageView.image = iconImageView.image?.withRenderingMode(.alwaysTemplate)
         self.iconImageView.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
