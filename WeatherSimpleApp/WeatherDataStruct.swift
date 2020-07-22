@@ -8,6 +8,7 @@
 import Foundation
 
 struct WeatherResponse: Codable {
+    
     let latitude: Float
     let longitude: Float
     let timezone: String
@@ -18,6 +19,7 @@ struct WeatherResponse: Codable {
 }
 
 struct CurrentWeather: Codable {
+    
     let time: Int
     let summary: String
     let icon: String
@@ -38,12 +40,14 @@ struct CurrentWeather: Codable {
 }
 
 struct DailyWeather: Codable {
+    
     let summary: String
     let icon: String
     let data: [DailyWeatherEntry]
 }
 
 struct DailyWeatherEntry: Codable {
+    
     let time: Int
     let summary: String
     let icon: String
@@ -86,12 +90,14 @@ struct DailyWeatherEntry: Codable {
 }
 
 struct HourlyWeather: Codable {
+    
     let summary: String
     let icon: String
     let data: [HourlyWeatherEntry]
 }
 
 struct HourlyWeatherEntry: Codable {
+    
     let time: Int
     let summary: String
     let icon: String

@@ -18,15 +18,10 @@ class HeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var windSideIcon: UIImageView!
     
     override func awakeFromNib() {
+        
         super.awakeFromNib()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     static let identifier = "HeaderTableViewCell"
     static func nib() -> UINib {
         return UINib(nibName: "HeaderTableViewCell", bundle: nil)
